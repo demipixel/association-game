@@ -46,6 +46,7 @@ input[type='text'] {
   border-radius: 6px;
   font-size: x-large;
   background: #fcfcfc;
+  padding: 3px;
 }
 
 input:focus {

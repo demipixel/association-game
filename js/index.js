@@ -31,14 +31,14 @@ function onLoad() {
     }
   };
 
-  fetch('/js/random_words.json')
+  fetch('/association-game/js/random_words.json')
     .then((res) => res.json())
     .then((res) => {
       WORDS = res.data.map((obj) => obj.word.value);
       console.log(WORDS.slice(0, 10));
       ready();
     });
-  fetch('/js/random_nouns.json')
+  fetch('/association-game/js/random_nouns.json')
     .then((res) => res.json())
     .then((res) => {
       NOUNS = res.data.map((obj) => obj.noun.value);
