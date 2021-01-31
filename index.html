@@ -1,0 +1,102 @@
+<html>
+  <head>
+    <script src="js/util.js"></script>
+    <script src="js/index.js"></script>
+    <link
+      href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/css/index.css" />
+  </head>
+  <body onLoad="onLoad()">
+    <div class="text-center mt-16">
+      <div id="preword-text" class="opacity-90 text-xl">Word #1 is...</div>
+      <div id="word" class="text-6xl font-extrabold my-8">Loading...</div>
+      <div id="time-remaining" class="mx-auto invisible">
+        <div
+          id="time-remaining-fill"
+          style="width: 100%; background: #03fca9"
+        ></div>
+      </div>
+    </div>
+    <div class="flex flex-row mt-4">
+      <div
+        id="start-button"
+        class="btn btn-green mx-auto hidden"
+        onClick="start()"
+      >
+        Start
+      </div>
+      <div
+        id="pause-button"
+        class="btn btn-orange ml-auto mr-8 hidden"
+        onClick="pause()"
+      >
+        Pause
+      </div>
+      <div
+        id="resume-button"
+        class="btn btn-green ml-auto mr-8 hidden"
+        onClick="resume()"
+      >
+        Resume
+      </div>
+      <div
+        id="skip-button"
+        class="btn btn-red ml-8 mr-auto hidden"
+        onClick="newWord(true)"
+      >
+        Skip
+      </div>
+      <div
+        id="end-button"
+        class="btn btn-red ml-8 mr-auto hidden"
+        onClick="end()"
+      >
+        End
+      </div>
+      <div
+        id="download-count-data-button"
+        class="btn btn-blue ml-4 mr-4 hidden"
+        onClick="downloadCountData()"
+      >
+        Download Count Data
+      </div>
+      <div
+        id="download-associations-button"
+        class="btn btn-blue ml-4 mr-auto hidden"
+        onClick="downloadAssociations()"
+      >
+        Download Your Associations
+      </div>
+    </div>
+    <div id="options" class="font-bold text-center text-xl mt-4">
+      <div>
+        <input id="nouns-only" type="checkbox" checked /> &nbsp;&nbsp; Nouns
+        only
+      </div>
+      <div class="mt-4">
+        <input id="seconds-per-word" type="Text" size="4" value="60" />
+        &nbsp;&nbsp; Seconds per word
+      </div>
+    </div>
+    <div id="end-info" class="hidden font-bold text-center mt-4">
+      If you hit end, your current word will not count.
+    </div>
+
+    <div class="mt-8 flex flex-row justify-center">
+      <div>
+        <input
+          id="enter-word"
+          type="text"
+          class="text-center hidden"
+          size="30"
+        />
+      </div>
+    </div>
+    <div
+      id="associations"
+      class="flex flex-col items-center font-bold text-xl mt-8"
+    ></div>
+  </body>
+</html>

@@ -1,0 +1,77 @@
+html,
+body {
+  color: #4f5266;
+  background: #f5f5f5;
+}
+
+.btn {
+  padding: 5px 20px;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: larger;
+  cursor: pointer;
+}
+
+.btn:hover {
+  opacity: 50%;
+}
+
+.btn-orange {
+  color: rgb(108, 86, 0);
+  background: rgb(255, 208, 106);
+}
+
+.btn-green {
+  color: rgb(12, 87, 24);
+  background: rgb(157, 255, 152);
+}
+
+.btn-red {
+  color: rgb(57, 0, 0);
+  background: rgb(255, 169, 169);
+}
+
+.btn-blue {
+  color: rgb(0, 33, 116);
+  background: rgb(169, 246, 255);
+}
+
+.btn.disabled {
+  opacity: 50%;
+  pointer-events: none;
+}
+
+input[type='text'] {
+  box-shadow: 0px 0px 10px -4px rgba(0, 0, 0, 0.5);
+  border-radius: 6px;
+  font-size: x-large;
+  background: #fcfcfc;
+}
+
+input:focus {
+  outline: none;
+  background: white;
+}
+
+input[type='checkbox'] {
+  /* Double-sized Checkboxes */
+  -ms-transform: scale(2); /* IE */
+  -moz-transform: scale(2); /* FF */
+  -webkit-transform: scale(2); /* Safari and Chrome */
+  -o-transform: scale(2); /* Opera */
+  transform: scale(2);
+  padding: 10px;
+}
+
+#time-remaining {
+  width: 600px;
+  height: 10px;
+  border-radius: 9999px;
+  background: #ddd;
+  overflow: hidden;
+}
+
+#time-remaining-fill {
+  height: 100%;
+  border-radius: 999px;
+}
