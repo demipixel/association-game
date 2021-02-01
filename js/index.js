@@ -9,6 +9,7 @@ let wordNum = 0;
 let usedWords = {};
 let wordData = [];
 let timeRemaining = 0;
+let waitingForLastAssociation = false;
 
 // RESET, PLAYING, PAUSED
 let gameStatus = 'RESET';
@@ -35,25 +36,29 @@ function onLoad() {
     .then((res) => res.json())
     .then((res) => {
       WORDS = res.data.map((obj) => obj.word.value);
-      console.log(WORDS.slice(0, 10));
       ready();
     });
   fetch('/association-game/js/random_nouns.json')
     .then((res) => res.json())
     .then((res) => {
       NOUNS = res.data.map((obj) => obj.noun.value);
-      console.log(NOUNS.slice(0, 10));
       ready();
     });
 
-  document
-    .getElementById('enter-word')
-    .addEventListener('keydown', function (event) {
-      console.log(event);
-      if (event.keyCode === 13) {
-        makeAssociation();
-      }
-    });
+  const enterWordDom = document.getElementById('enter-word');
+
+  enterWordDom.addEventListener('keydown', function (event) {
+    if (event.keyCode === 13) {
+      makeAssociation();
+    }
+  });
+
+  enterWordDom.addEventListener('up', function (event) {
+    if (enterWordDom.value === '' && waitingForLastAssociation) {
+      waitingForLastAssociation = false;
+      newWord();
+    }
+  });
 
   timeRemainingFillDom = document.getElementById('time-remaining-fill');
   timeRemainingFillDom.style.background = TIME_REMAINING_COLORS.FULL;
@@ -70,7 +75,12 @@ function onLoad() {
     const lastTimeRemaining = timeRemaining;
     timeRemaining -= delta;
     if (timeRemaining < 0) {
-      newWord();
+      timeRemaining = 0;
+      if (enterWordDom.value !== '') {
+        waitingForLastAssociation = true;
+      } else {
+        newWord();
+      }
     }
 
     timeRemainingFillDom.style.width =
