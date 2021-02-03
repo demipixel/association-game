@@ -23,6 +23,10 @@ const TIME_REMAINING_COLORS = {
 };
 
 function onLoad() {
+  window.onbeforeunload = function () {
+    return 'Are you sure?';
+  };
+
   let readyCount = 0;
   const ready = () => {
     readyCount++;
